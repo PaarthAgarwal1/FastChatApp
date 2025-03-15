@@ -7,20 +7,20 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: ["http://localhost:5174"],
+        origin: [process.env.CLIENT_URL], // added client url. k
     }
 });
 
 const userSocketMap = {};
 
 const getReceiverSocketId = (userId) => {
-  return userSocketMap[userId] || null;
+    return userSocketMap[userId] || null;
 }
 
 io.on("connection", (socket) => {
     console.log("A user is connected", socket.id);
     const userId = socket.handshake.query.userId;
-    
+
     if (userId) {
         userSocketMap[userId] = socket.id;
     }
@@ -35,4 +35,4 @@ io.on("connection", (socket) => {
     });
 });
 
-module.exports = { io, server, app,getReceiverSocketId };
+module.exports = { io, server, app, getReceiverSocketId };
