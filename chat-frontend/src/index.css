@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --color-custom-rgba: rgba(17, 25, 40, 0.75);
+  --color-custom-rgba-search: rgba(17, 25, 40, 0.5);
+  --backdrop-blur-custom: 19px;
+}
+
+body {
+  background-image: url("/bg.jpg");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: white;
+}
